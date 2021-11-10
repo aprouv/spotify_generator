@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_11_09_111813) do
 
   create_table "playlists", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "genre"
     t.integer "danceability"
     t.integer "energy"
