@@ -1,6 +1,11 @@
-<h1><%= @playlist.name %></h1>
+<div class="container">
+  <h1><%= @playlist.name %></h1>
 
-<ul>
-  <li><%= @playlist.genre %></li>
-  <li><%= @playlist.energy %></li>
-</ul>
+  <ul>
+    <li>Genre : <%= @playlist.genre %></li>
+    <li>Energy : <%= @playlist.energy %></li>
+    <li>Danceability : <%= @playlist.danceability %></li>
+  </ul>
+
+  <%= link_to "Toutes les playlists", playlists_path %>
+</div>

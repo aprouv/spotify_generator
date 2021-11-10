@@ -6,13 +6,18 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
     @playlist = playlists(:one)
   end
 
+  test "can get index" do
+    get playlists_url
+    assert_response :success
+  end
+
   test "can view playlist" do
     get playlist_url(@playlist)
     assert_response :success
   end
 
   test "can get new" do
-    get playlists_new_url
+    get new_playlist_url
     assert_response :success
   end
 
