@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="text-center">Ajouter une nouvelle playlist</h1>
+  <div class="row justify-content-center form-body">
+      <%= simple_form_for(@playlist) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.input :name, label: "Nom" %>
+          <%= f.input :genre, as: :select, collection: ["genre1", "genre2"], prompt: 'Sélectionner le genre', label: "Genre" %>
+          <%= f.input :danceability, collection: (1..100).to_a, label: "Niveau de bootyshake" %>
+          <%= f.input :energy, collection: (1..100).to_a, label: "Niveau d'énergie" %>
+          <%= f.submit "Ajouter", class: "btn btn-dark" %>
+      <% end %>
+  </div>
+</div>
