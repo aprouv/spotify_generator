@@ -9,11 +9,16 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   test "can get index" do
     get playlists_url
     assert_response :success
+    assert_select "ul" do
+      assert_select "li", Playlist.count
+    end
   end
 
   test "can view playlist" do
     get playlist_url(@playlist)
     assert_response :success
+    assert_select "h1", "#{@playlist.name}"
+    assert_select "li", "Genre : #{@playlist.genre}"
   end
 
   test "can get new" do

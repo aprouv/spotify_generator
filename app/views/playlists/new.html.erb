@@ -3,12 +3,14 @@
   <div class="row justify-content-center form-body">
       <%= simple_form_for(@playlist) do |f| %>
         <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-          <%= f.input :name, label: "Nom de la playlist" %>
-          <%= f.input :genre, as: :select, collection: ["genre1", "genre2", "genre3"], prompt: 'Sélectionner le genre', label: "Genre musical" %>
-          <%= f.input :danceability, collection: (1..100).to_a, prompt: "De 1 (pas du tout) à 100 (je veux danser jusqu'à épuisement)", label: "Niveau de rythme" %>
-          <%= f.input :energy, collection: (1..100).to_a, prompt: "De 1 (dimanche soir dans mon canapé) à 100 (pile Duracell)", label: "Niveau d'énergie" %>
-          <%= f.submit "Ajouter", class: "mt-2 btn btn-dark" %>
+        <% if f.object.errors[:base].present? %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+        <% end %>
+        <%= f.input :name, label: "Nom de la playlist" %>
+        <%= f.input :genre, as: :select, collection: ["genre1", "genre2", "genre3"], prompt: 'Sélectionner le genre', label: "Genre musical" %>
+        <%= f.input :danceability, collection: (1..100).to_a, prompt: "De 1 (pas du tout) à 100 (je veux danser jusqu'à épuisement)", label: "Niveau de rythme" %>
+        <%= f.input :energy, collection: (1..100).to_a, prompt: "De 1 (dimanche soir dans mon canapé) à 100 (pile Duracell)", label: "Niveau d'énergie" %>
+        <%= f.submit "Ajouter", class: "mt-2 btn btn-dark" %>
       <% end %>
   </div>
   <div class="mt-5">
