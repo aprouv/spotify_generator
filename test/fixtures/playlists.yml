@@ -2,12 +2,12 @@
 
 one:
   name: "PlaylistOne"
-  genre: "genre2"
+  genre: "rock"
   danceability: 35
   energy: 78
 
 two:
   name: "PlaylistTwo"
-  genre: "genre1"
+  genre: "pop"
   danceability: 45
   energy: 20

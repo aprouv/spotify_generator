@@ -7,7 +7,7 @@ class PlaylistTest < ActiveSupport::TestCase
       name: 'name1',
       energy: 35,
       danceability: 56,
-      genre: "genre1"
+      genre: "rock"
     }
   end
 
@@ -22,12 +22,19 @@ class PlaylistTest < ActiveSupport::TestCase
   end
 
   test "should validate that at least one parameter is filled" do
-    playlist = Playlist.new(valid_playlist_params.merge(genre: "", danceability: nil))
+    playlist = Playlist.new(valid_playlist_params.merge(genre: nil, danceability: nil))
     assert playlist.valid?
     playlist = Playlist.new(valid_playlist_params.merge(energy: nil, danceability: nil))
     assert playlist.valid?
-    playlist = Playlist.new(valid_playlist_params.merge(energy: nil, genre: ""))
+    playlist = Playlist.new(valid_playlist_params.merge(energy: nil, genre: nil))
     assert playlist.valid?
+  end
+
+  test "should validate that genre is valid" do
+    playlist = Playlist.new(valid_playlist_params.merge(genre: "acoustic"))
+    assert playlist.valid?
+    playlist = Playlist.new(valid_playlist_params.merge(genre: "genre1"))
+    assert_not playlist.valid?
   end
 
   test "should validate that danceability is between 1 and 100" do

@@ -3,6 +3,7 @@ class Playlist < ApplicationRecord
   validate :at_least_one_critera_is_filled
   validates :energy, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100, only_integer: true, allow_nil: true }
   validates :danceability, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100, only_integer: true, allow_nil: true }
+  validates :genre, inclusion: { in: PlaylistsHelper::GENRES, message: "Please select a valid genre", allow_nil: true }
 
   def at_least_one_critera_is_filled
     if energy.blank? && danceability.blank? && genre.blank?
