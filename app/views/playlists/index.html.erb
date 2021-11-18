@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Toutes les playlists</h1>
+  <div class="pt-3">
+    <ul>
+      <% @playlists.each do |playlist| %>
+        <%= link_to playlist_path(playlist) do %>
+          <li><h3><%= playlist.name %></h3></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <%= link_to "Ajouter une nouvelle playlist", new_playlist_path %>
+  </div>
+</div>

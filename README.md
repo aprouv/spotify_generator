@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requirements
 
-Things you may want to cover:
+ruby 2.7.3
+postgresql >= 13
 
-* Ruby version
+Getting started
 
-* System dependencies
+To get started with the app, clone the repo and then install the needed gems:
 
-* Configuration
+bundle install
 
-* Database creation
+Configure database
 
-* Database initialization
+rails db:create
+rails db:migrate
+rails db:seed
 
-* How to run the test suite
+Seed the database
 
-* Services (job queues, cache servers, search engines, etc.)
+Run:
 
-* Deployment instructions
+rails db:seed
 
-* ...
+Finally, run the test suite to verify that everything is working correctly:
+
+rails test
+
+If the test suite passes, you'll be ready to run the app in a local server:
+
+rails server

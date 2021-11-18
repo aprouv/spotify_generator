@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "PlaylistOne"
+  genre: "rock"
+  danceability: 35
+  energy: 78
+
+two:
+  name: "PlaylistTwo"
+  genre: "pop"
+  danceability: 45
+  energy: 20
