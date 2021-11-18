@@ -1,3 +1,5 @@
+require 'rspotify'
+
 class PlaylistsController < ApplicationController
 
   def index
@@ -15,6 +17,10 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
 
+    if @playlist.valid?
+      PlaylistCreator.new(@playlist.genre, @playlist.energy, @playlist.danceability, @playlist).get_playlist
+    end
+
     if @playlist.save
       redirect_to playlist_path(@playlist)
     else
@@ -25,6 +31,7 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name, :genre, :danceability, :energy)
+    params.require(:playlist).permit(:name, :genre, :danceability, :energy, :spotify_id)
   end
+
 end
