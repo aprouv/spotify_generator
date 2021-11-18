@@ -2,9 +2,10 @@
   <h1><%= @playlist.name %></h1>
 
   <ul>
+    <li> <%= link_to "Ecouter", "https://open.spotify.com/playlist/#{@playlist.spotify_id}", target: :_blank %></li>
     <li>Genre : <%= @playlist.genre %></li>
-    <li>Energy : <%= @playlist.energy %></li>
-    <li>Danceability : <%= @playlist.danceability %></li>
+    <li>Niveau d'énergie : <%= @playlist.energy %></li>
+    <li>Niveau de rythme : <%= @playlist.danceability %></li>
   </ul>
 
   <%= link_to "Toutes les playlists", playlists_path %>
