@@ -18,7 +18,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.valid?
-      PlaylistCreator.new(@playlist.genre, @playlist.energy, @playlist.danceability, @playlist).get_playlist
+      @playlist.spotify_id = PlaylistCreator.new(@playlist.genre, @playlist.energy, @playlist.danceability, @playlist).get_playlist
     end
 
     if @playlist.save
