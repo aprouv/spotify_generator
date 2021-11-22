@@ -1,4 +1,5 @@
 require "application_system_test_case"
+require "minitest/mock"
 
 class PlaylistsTest < ApplicationSystemTestCase
 
@@ -33,7 +34,14 @@ class PlaylistsTest < ApplicationSystemTestCase
     select "#{@new_playlist.danceability}", from: "Niveau de rythme"
     select "#{@new_playlist.energy}", from: "Niveau d'énergie"
 
-    click_on "Ajouter"
+    playlist_creator = MiniTest::Mock.new
+    playlist_creator.expect :generate_from_seeds, '7arUpiznIbygcHXRgfND8u'
+
+    PlaylistCreator.stub :new, playlist_creator do
+      click_on "Ajouter"
+    end
+
+    assert_equal Playlist.last.spotify_id, '7arUpiznIbygcHXRgfND8u'
 
     assert_text "#{@new_playlist.name}"
   end
