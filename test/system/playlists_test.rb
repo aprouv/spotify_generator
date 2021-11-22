@@ -34,21 +34,16 @@ class PlaylistsTest < ApplicationSystemTestCase
     select "#{@new_playlist.danceability}", from: "Niveau de rythme"
     select "#{@new_playlist.energy}", from: "Niveau d'énergie"
 
-    click_on "Ajouter"
+    playlist_creator = MiniTest::Mock.new
+    playlist_creator.expect :generate_from_seeds, '7arUpiznIbygcHXRgfND8u'
 
-    mock = Minitest::Mock.new
-    mock.expect(:generate_from_seeds, '7arUpiznIbygcHXRgfND8u')
-
-    PlaylistCreator.stub :new, mock do
-      @new_playlist.spotify_id = PlaylistCreator.new(@new_playlist).generate_from_seeds
+    PlaylistCreator.stub :new, playlist_creator do
+      click_on "Ajouter"
     end
 
-    assert_mock mock
+    assert_equal Playlist.last.spotify_id, '7arUpiznIbygcHXRgfND8u'
 
     assert_text "#{@new_playlist.name}"
-    assert_link "Ecouter"
-    # click_on "Ecouter"
-    # assert_text "https://open.spotify.com/playlist/#{@new_playlist.spotify_id}"
   end
 
   test "cannot create playlist with invalid parameters" do
