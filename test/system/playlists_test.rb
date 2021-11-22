@@ -1,4 +1,5 @@
 require "application_system_test_case"
+require "minitest/mock"
 
 class PlaylistsTest < ApplicationSystemTestCase
 
@@ -35,7 +36,19 @@ class PlaylistsTest < ApplicationSystemTestCase
 
     click_on "Ajouter"
 
+    mock = Minitest::Mock.new
+    mock.expect(:generate_from_seeds, '7arUpiznIbygcHXRgfND8u')
+
+    PlaylistCreator.stub :new, mock do
+      @new_playlist.spotify_id = PlaylistCreator.new(@new_playlist).generate_from_seeds
+    end
+
+    assert_mock mock
+
     assert_text "#{@new_playlist.name}"
+    assert_link "Ecouter"
+    # click_on "Ecouter"
+    # assert_text "https://open.spotify.com/playlist/#{@new_playlist.spotify_id}"
   end
 
   test "cannot create playlist with invalid parameters" do
