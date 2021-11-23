@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="login">
+      <% if current_user %>
+          <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "login-out" %>
+      <% else %>
+          <%= link_to "Me connecter",  new_user_session_path, class: "login-out" %>
+      <% end %>
+  </div>
+</div>
