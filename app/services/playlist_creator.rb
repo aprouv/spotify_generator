@@ -9,16 +9,16 @@ class PlaylistCreator
   end
 
   def energy
-    @playlist.energy
+    @playlist.energy/100 if !@playlist.energy.nil?
   end
 
   def danceability
-    @playlist.danceability
+    @playlist.danceability/100 if !@playlist.energy.nil?
   end
 
   def generate_from_seeds
     user = retrieve_user
-    recommendations = RSpotify::Recommendations.generate(seed_genres: [genre], target_energy: energy/100, target_danceability: danceability/100)
+    recommendations = RSpotify::Recommendations.generate({seed_genres: (genre.nil? ? nil : [genre]), target_energy: energy, target_danceability: danceability}.compact)
     tracks = recommendations.tracks
     spotify_playlist = user.create_playlist!(@playlist.name)
     spotify_playlist.add_tracks!(tracks)
