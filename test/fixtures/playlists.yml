@@ -5,9 +5,11 @@ one:
   genre: "rock"
   danceability: 35
   energy: 78
+  user: andrea
 
 two:
   name: "PlaylistTwo"
   genre: "pop"
   danceability: 45
   energy: 20
+  user: andrea

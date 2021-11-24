@@ -2,12 +2,17 @@ require "test_helper"
 
 class PlaylistTest < ActiveSupport::TestCase
 
+  setup do
+    @user = users(:andrea)
+  end
+
   def valid_playlist_params
     {
       name: 'name1',
       energy: 35,
       danceability: 56,
-      genre: "rock"
+      genre: "rock",
+      user_id: @user_id
     }
   end
 
@@ -22,7 +27,7 @@ class PlaylistTest < ActiveSupport::TestCase
   end
 
   test "should validate that at least one parameter is filled" do
-    playlist = Playlist.new(valid_playlist_params.merge(genre: nil, danceability: nil))
+    playlist = @user.playlists.new(valid_playlist_params.merge(genre: nil, danceability: nil))
     assert playlist.valid?
     playlist = Playlist.new(valid_playlist_params.merge(energy: nil, danceability: nil))
     assert playlist.valid?
@@ -39,13 +44,13 @@ class PlaylistTest < ActiveSupport::TestCase
 
   test "should validate that danceability is between 1 and 100" do
     i = rand(1..100)
-    playlist = Playlist.new(name: "name1", danceability: i)
+    playlist = Playlist.new(name: "name1", danceability: i, user_id: @user.id)
     assert playlist.valid?
   end
 
   test "should validate that energy is between 1 and 100" do
     i = rand(1..100)
-    playlist = Playlist.new(name: "name1", energy: i)
+    playlist = Playlist.new(name: "name1", energy: i, user_id: @user.id)
     assert playlist.valid?
   end
 
