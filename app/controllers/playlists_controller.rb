@@ -16,8 +16,6 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    @user = current_user
-    @playlist.user = @user
 
     if @playlist.valid?
       @playlist.spotify_id = PlaylistCreator.new(@playlist).generate_from_seeds
@@ -33,7 +31,7 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name, :genre, :danceability, :energy, :spotify_id)
+    params.require(:playlist).permit(:name, :genre, :danceability, :energy, :spotify_id).merge(user: current_user)
   end
 
 end
