@@ -1,6 +1,6 @@
 require 'rspotify'
 
-class PlaylistsController < ApplicationController
+class PlaylistsController < AuthenticatedUserController
 
   def index
     @playlists = Playlist.all
