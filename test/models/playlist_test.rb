@@ -12,7 +12,7 @@ class PlaylistTest < ActiveSupport::TestCase
       energy: 35,
       danceability: 56,
       genre: "rock",
-      user_id: @user_id
+      user: @user
     }
   end
 
@@ -36,7 +36,7 @@ class PlaylistTest < ActiveSupport::TestCase
   end
 
   test "should validate that genre is valid" do
-    playlist = Playlist.new(valid_playlist_params.merge(genre: "acoustic"))
+    playlist = Playlist.new(valid_playlist_params.merge(genre: "folk"))
     assert playlist.valid?
     playlist = Playlist.new(valid_playlist_params.merge(genre: "genre1"))
     assert_not playlist.valid?
@@ -44,13 +44,13 @@ class PlaylistTest < ActiveSupport::TestCase
 
   test "should validate that danceability is between 1 and 100" do
     i = rand(1..100)
-    playlist = Playlist.new(name: "name1", danceability: i, user_id: @user.id)
+    playlist = Playlist.new(valid_playlist_params.merge(danceability: i))
     assert playlist.valid?
   end
 
   test "should validate that energy is between 1 and 100" do
     i = rand(1..100)
-    playlist = Playlist.new(name: "name1", energy: i, user_id: @user.id)
+    playlist = Playlist.new(valid_playlist_params.merge(energy: i))
     assert playlist.valid?
   end
 
@@ -71,6 +71,11 @@ class PlaylistTest < ActiveSupport::TestCase
 
   test "should validate that energy is not less than 1" do
     playlist = Playlist.new(valid_playlist_params.merge(energy: -1))
+    assert_not playlist.valid?
+  end
+
+  test "should validate user_id presence" do
+    playlist = Playlist.new(valid_playlist_params.merge(user_id: nil))
     assert_not playlist.valid?
   end
 end

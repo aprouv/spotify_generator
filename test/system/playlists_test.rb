@@ -3,11 +3,11 @@ require "minitest/mock"
 
 class PlaylistsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
+  include Warden::Test::Helpers
 
   setup do
     @user = users(:andrea)
-    visit new_user_session_path
-    log_in(@user)
+    login_as(@user, :scope => :user)
     @playlist = playlists(:one)
     @new_playlist = Playlist.new(name: "PlaylistTest", genre: "techno", energy: "45", danceability: "98")
   end
