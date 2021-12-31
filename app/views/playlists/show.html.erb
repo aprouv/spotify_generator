@@ -1,12 +1,61 @@
-<div class="container">
-  <h1><%= @playlist.name %></h1>
-
-  <ul>
-    <li> <%= link_to "Ecouter", "https://open.spotify.com/playlist/#{@playlist.spotify_id}", target: :_blank %></li>
-    <li>Genre : <%= @playlist.genre %></li>
-    <li>Niveau d'énergie : <%= @playlist.energy %></li>
-    <li>Niveau de rythme : <%= @playlist.danceability %></li>
-  </ul>
-
-  <%= link_to "Toutes les playlists", playlists_path %>
+<div class="background">
+  <div class="container">
+   <div class="playlist-wrapper">
+      <div class="playlists-headers">
+        <div>
+          <h1><%= @playlist.name.capitalize %></h1>
+        </div>
+        <div class="link-playlists">
+          <%= link_to "Toutes les playlists", playlists_path %>
+        </div>
+      </div>
+      <div class="infos">
+        <div class="infos-left">
+          <div class="img" style="background-image: url('https://source.unsplash.com/random/300×300');">
+          </div>
+          <ul class="details">
+            <% if @playlist.genre.present? %>
+              <li>Genre : <%= @playlist.genre.capitalize %></li>
+            <% end %>
+            <% if @playlist.energy.present? %>
+              <li>Energie :
+                <% if @playlist.energy < 25 %>
+                  +
+                <% elsif @playlist.energy < 50 %>
+                  ++
+                <% elsif @playlist.energy < 74 %>
+                  +++
+                <% else %>
+                  ++++
+                <% end %>
+              </li>
+            <% end %>
+            <% if @playlist.danceability.present? %>
+              <li>Rythme :
+                <% if @playlist.danceability < 25 %>
+                  +
+                <% elsif @playlist.danceability < 50 %>
+                  ++
+                <% elsif @playlist.danceability < 74 %>
+                  +++
+                <% else %>
+                  ++++
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="listen-link">
+          <%= link_to "https://open.spotify.com/playlist/#{@playlist.spotify_id}", target: :_blank do %>
+            <div class="play">
+              <i class="fas fa-play"></i>
+            </div>
+            <div>
+              <p>Ecouter</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
