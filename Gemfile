@@ -27,6 +27,7 @@ gem 'rspotify'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'omniauth-spotify'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
