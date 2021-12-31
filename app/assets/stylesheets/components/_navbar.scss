@@ -1,5 +1,17 @@
-.login {
-  text-align: right;
-  margin-bottom: 20px;
-  margin-top: 10px;
+.navbar {
+  background: black;
+  height: 60px;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.logo h2 {
+  color: #FBB292;
+}
+
+.login a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
 }

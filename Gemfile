@@ -26,6 +26,7 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'rspotify'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'devise'
+gem 'font-awesome-sass'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

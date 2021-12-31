@@ -1,5 +1,19 @@
 // External libraries
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+/*
+ *= require font-awesome
+ */
 
 // CSS partials
 @import "components/index";
+@import "pages/index";
+
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+
+body {
+  font-family: $font;
+}

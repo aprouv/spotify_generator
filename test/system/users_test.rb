@@ -58,10 +58,8 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector("h1", text: "Toutes les playlists")
     assert_text "Signed in successfully."
 
-    click_on "Me déconnecter"
-
-    assert_selector("form")
-    assert_text "You need to sign in or sign up before continuing."
+    click_on "Déconnexion"
+    assert_text "Signed out successfully."
   end
 
   test "sign up with valid information" do
