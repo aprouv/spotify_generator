@@ -1,9 +1,12 @@
-<div class="container">
+<div class="navbar">
+  <div class="logo">
+    <h2>Playlistator</h2>
+  </div>
   <div class="login">
-      <% if current_user %>
-          <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "login-out" %>
+      <% if user_signed_in? %>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "login-out" %>
       <% else %>
-          <%= link_to "Me connecter",  new_user_session_path, class: "login-out" %>
+          <%= link_to "Connexion",  new_user_session_path, class: "login-out" %>
       <% end %>
   </div>
 </div>
