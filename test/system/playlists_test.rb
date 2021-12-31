@@ -17,22 +17,24 @@ class PlaylistsTest < ApplicationSystemTestCase
     visit playlists_path
 
     assert_selector "h1", text: "Toutes les playlists"
-    assert_selector "ul" do
-      assert_selector("li", text: "#{@playlist.name}")
-    end
+    assert_selector "h3", text: "#{@playlist.name}"
   end
 
   test "visit show" do
     visit playlist_path(@playlist)
 
-    assert_selector("h1", text: "#{@playlist.name}")
-    assert_selector("li", text: "Genre : #{@playlist.genre}")
+    assert_selector("h1", text: "#{@playlist.name.capitalize}")
+    assert_selector "ul" do
+      assert_selector("li", text: "Genre : #{@playlist.genre.capitalize}")
+      assert_selector("li", text: "Energie")
+      assert_selector("li", text: "Rythme")
+    end
   end
 
   test "can create playlist with valid parameters (from index)" do
     visit playlists_path
 
-    click_on "Ajouter une nouvelle playlist"
+    click_on "Créer une playlist"
 
     assert_selector("form#new_playlist")
 
@@ -50,7 +52,7 @@ class PlaylistsTest < ApplicationSystemTestCase
 
     assert_equal Playlist.last.spotify_id, '7arUpiznIbygcHXRgfND8u'
 
-    assert_text "#{@new_playlist.name}"
+    assert_text "#{@new_playlist.name.capitalize}"
   end
 
   test "cannot create playlist with invalid parameters" do
