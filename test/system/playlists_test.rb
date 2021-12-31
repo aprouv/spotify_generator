@@ -2,14 +2,20 @@ require "application_system_test_case"
 require "minitest/mock"
 
 class PlaylistsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+  include Warden::Test::Helpers
 
   setup do
+    @user = users(:andrea)
+    login_as(@user, :scope => :user)
     @playlist = playlists(:one)
     @new_playlist = Playlist.new(name: "PlaylistTest", genre: "techno", energy: "45", danceability: "98")
   end
 
   test "visit index" do
+
     visit playlists_path
+
     assert_selector "h1", text: "Toutes les playlists"
     assert_selector "ul" do
       assert_selector("li", text: "#{@playlist.name}")
@@ -18,6 +24,7 @@ class PlaylistsTest < ApplicationSystemTestCase
 
   test "visit show" do
     visit playlist_path(@playlist)
+
     assert_selector("h1", text: "#{@playlist.name}")
     assert_selector("li", text: "Genre : #{@playlist.genre}")
   end

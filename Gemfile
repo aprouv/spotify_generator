@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'bootstrap', '~> 5.1.3'
 gem 'rspotify'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'devise'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
