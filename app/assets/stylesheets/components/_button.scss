@@ -1,0 +1,28 @@
+.btn-signin {
+  border-radius: 30px;
+  background: black;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  &:active {
+    background: rgb(98, 96, 96);
+    color: white;
+  }
+  &:hover {
+    color: $pink;
+  }
+}
+
+
+.btn.btn-dark {
+  float: right;
+  background: $pink;
+  color: black;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-weight: bold;
+  &:active {
+    background: rgb(98, 96, 96);
+    color: white;
+  }
+}

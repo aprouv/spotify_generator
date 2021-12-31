@@ -1,0 +1,54 @@
+.infos {
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.infos-left {
+  display: flex;
+}
+
+.img {
+  background-size: cover;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.details {
+  list-style: none;
+  align-self: flex-start;
+}
+
+.listen-link {
+  display: flex;
+  width: 30%;
+  margin-left: 85px;
+  a {
+    align-self: center;
+    text-decoration: none;
+  }
+}
+
+.fas {
+  color: black;
+  position: absolute;
+  bottom: 14px;
+  left: 19px;
+  font-size: 40px;
+}
+
+.play {
+  border-radius: 50px;
+  height: 70px;
+  width: 70px;
+  border: 1px solid $pink;
+  position: relative;
+  background: $pink;
+}
+
+body > div.background > div > div > div.infos > div.listen-link > a > div:nth-child(2) > p {
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+}

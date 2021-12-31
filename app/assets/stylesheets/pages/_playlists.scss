@@ -1,0 +1,46 @@
+.playlists-headers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: white;
+  h1 {
+    font-size: 26px;
+  }
+}
+
+.background {
+  background: black;
+  border-top: 0.5px solid rgb(140, 140, 140);
+  min-height: 100vh;
+}
+
+.link-playlists a {
+  color: $pink;
+  text-decoration: none;
+  border: 0.5px solid white;
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover {
+    background: $pink;
+    color: black;
+  }
+  &:active {
+    background: $pink;
+    opacity: 0.5;
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 100px) and (max-width: 575px) {
+  .link-playlists a {
+    font-size: 12px;
+  }
+  .playlists-headers h1 {
+    font-size: 20px;
+  }
+}
