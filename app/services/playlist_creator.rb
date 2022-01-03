@@ -30,10 +30,10 @@ class PlaylistCreator
   def retrieve_user
     authenticate_on_spotify
     RSpotify::User.new(
-      'id' => 'exzc2ueeacu6w6rd7x13584lx',
+      'id' => @playlist.user.uid,
       'credentials' => {
-        'refresh_token' => ENV["REFRESH_TOKEN"],
-        'token' => ENV["TOKEN"],
+        'refresh_token' => @playlist.user.refresh_token,
+        'token' => @playlist.user.token,
         }
     )
   end
