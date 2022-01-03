@@ -1,7 +1,7 @@
 <div class="banner"">
   <div class="container">
     <h1>Créez vos playlists personnalisées</h1>
-    <h5>Générez et enregistrez vos playlists personnalisées en quelques clics !</h5>
-    <%= link_to "Me connecter", new_user_session_path, class: "btn-signin" %>
+    <h5>Créez et enregistrez vos playlists personnalisées en quelques clics ! Ces playlists seront directement ajoutées à votre compte Spotify.</h5>
+    <%= link_to "Me connecter avec Spotify", user_spotify_omniauth_authorize_path, class: "btn-signin" %>
   </div>
 </div>

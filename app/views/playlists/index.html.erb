@@ -11,21 +11,34 @@
       </div>
       <div class="pt-3 playlist-cards">
         <% @playlists.each do |playlist| %>
-        <div class="playlist-card">
-          <%= link_to playlist_path(playlist) do %>
-          <div class="playlist-img">
-            <h3><%= playlist.name %></h3>
-          </div>
+          <% if playlist.user_id == current_user.id %>
+            <div class="playlist-card">
+              <%= link_to playlist_path(playlist) do %>
+              <div class="playlist-img"
+                  <% if playlist.danceability.nil? %>
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie0.jpg")%>')";
+                  <% elsif playlist.danceability < 25 %>
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie1.jpg")%>')";
+                  <% elsif playlist.danceability < 50 %>
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie2.jpg")%>')";
+                  <% elsif playlist.danceability < 74 %>
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie3.jpg")%>')";
+                  <% else %>
+                    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie4.jpg")%>')";
+                <% end %>>
+                <h3><%= playlist.name %></h3>
+              </div>
+              <% end %>
+              <div class="playlist-info">
+                <div class="playlist-name">
+                  <%= playlist.name %>
+                </div>
+                <div class="playlist-genre">
+                  <%= playlist.genre %>
+                </div>
+              </div>
+            </div>
           <% end %>
-          <div class="playlist-info">
-            <div class="playlist-name">
-              <%= playlist.name %>
-            </div>
-            <div class="playlist-genre">
-              <%= playlist.genre %>
-            </div>
-          </div>
-        </div>
         <% end %>
       </div>
     </div>

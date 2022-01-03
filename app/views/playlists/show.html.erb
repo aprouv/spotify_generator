@@ -11,7 +11,18 @@
       </div>
       <div class="infos">
         <div class="infos-left">
-          <div class="img" style="background-image: url('https://source.unsplash.com/random/300×300');">
+          <div class="img"
+            <% if @playlist.danceability.nil? %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie0.jpg")%>')";
+            <% elsif @playlist.danceability < 25 %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie1.jpg")%>')";
+            <% elsif @playlist.danceability < 50 %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie2.jpg")%>')";
+            <% elsif @playlist.danceability < 74 %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie3.jpg")%>')";
+            <% else %>
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie4.jpg")%>')";
+            <% end %>>
           </div>
           <ul class="details">
             <% if @playlist.genre.present? %>
