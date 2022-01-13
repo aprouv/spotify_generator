@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_01_02_132449) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "playlists", force: :cascade do |t|
     t.string "name", null: false
     t.string "genre"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_132449) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "spotify_id"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
