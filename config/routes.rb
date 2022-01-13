@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/home'
-  devise_for :users
   root to: "pages#home"
   resources :playlists, only: [:index, :show, :new, :create]
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }, skip: [:session]
+  as :user do
+    delete "/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
 end

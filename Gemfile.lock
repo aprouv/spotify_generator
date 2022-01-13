@@ -168,6 +168,8 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-spotify (0.0.13)
+      omniauth-oauth2 (~> 1.1)
     orm_adapter (0.5.0)
     pg (1.2.3)
     popper_js (2.9.3)
@@ -298,6 +300,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  omniauth-spotify
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

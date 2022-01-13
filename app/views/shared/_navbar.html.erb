@@ -1,12 +1,14 @@
 <div class="navbar">
   <div class="logo">
-    <h2>Playlistator</h2>
+    <%= link_to root_path do %>
+      <h2>Playlistator</h2>
+    <% end %>
   </div>
   <div class="login">
       <% if user_signed_in? %>
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "login-out" %>
       <% else %>
-          <%= link_to "Connexion",  new_user_session_path, class: "login-out" %>
+          <%= link_to "Connexion",  user_spotify_omniauth_authorize_path, class: "login-out" %>
       <% end %>
   </div>
 </div>

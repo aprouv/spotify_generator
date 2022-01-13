@@ -5,80 +5,39 @@ class UsersTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:andrea)
+    OmniAuth.config.test_mode = true
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
+    Rails.application.env_config["omniauth.auth"]  = spotify_mock
   end
 
-  test "login with valid email/invalid password" do
+  test "login with valid Spotify account" do
 
     visit root_path
 
-    click_on "Me connecter"
+    click_on "Me connecter avec Spotify"
 
-    assert_selector("form")
-
-    fill_in "Email", with: "#{@user.email}"
-    fill_in "Password", with: ""
-
-    click_on "Log in"
-
-    assert_selector("form")
-    assert_text "Invalid Email or password."
+    assert_text "Successfully authenticated from Spotify account."
+    assert_text "Toutes les playlists"
+    assert_text "Déconnexion"
   end
 
-  test "login with invalid information" do
+  # test "login with valid information followed by logout" do
 
-    visit root_path
+  #   visit root_path
 
-    click_on "Me connecter"
+  #   click_on "Me connecter avec Spotify"
 
-    assert_selector("form")
+  #   assert_selector("form")
 
-    fill_in "Email", with: "aaaaa@"
-    fill_in "Password", with: ""
+  #   fill_in "Email", with: "#{@user.email}"
+  #   fill_in "Password", with: "password"
 
-    click_on "Log in"
+  #   click_on "Log in"
 
-    assert_selector("form")
-    assert_text "Invalid Email or password."
-  end
+  #   assert_selector("h1", text: "Toutes les playlists")
+  #   assert_text "Signed in successfully."
 
-  test "login with valid information followed by logout" do
-
-    visit root_path
-
-    click_on "Me connecter"
-
-    assert_selector("form")
-
-    fill_in "Email", with: "#{@user.email}"
-    fill_in "Password", with: "password"
-
-    click_on "Log in"
-
-    assert_selector("h1", text: "Toutes les playlists")
-    assert_text "Signed in successfully."
-
-    click_on "Déconnexion"
-    assert_text "Signed out successfully."
-  end
-
-  test "sign up with valid information" do
-
-    visit root_path
-
-    click_on "Me connecter"
-
-    click_on "Sign up"
-
-    assert_selector("form")
-
-    fill_in "Email", with: "test3@test.com"
-    fill_in("Password", match: :first, with: "password")
-    fill_in("Password confirmation", with: "password")
-
-    click_on "Sign up"
-
-    assert_selector("h1", text: "Toutes les playlists")
-    assert_text "Welcome! You have signed up successfully."
-  end
+  #   click_on "Déconnexion"
+  #   assert_text "Signed out successfully."
+  # end
 end
