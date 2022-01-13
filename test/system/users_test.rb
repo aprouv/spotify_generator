@@ -21,22 +21,6 @@ class UsersTest < ApplicationSystemTestCase
     assert_text "Déconnexion"
   end
 
-  private
-
-  def spotify_mock
-    OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
-    :provider => 'spotify',
-    :uid => 'dfghyjuikoiuzjkodeuhfjeios',
-        :credentials => {
-          :refresh_token => 'oiuhijzkpdkojhu7765678',
-          :token => 'JHGUI9876TYFV67Uj'
-          },
-        :info => {
-          :email => 'test70@test.com',
-        }
-    })
-  end
-
   # test "login with valid information followed by logout" do
 
   #   visit root_path
