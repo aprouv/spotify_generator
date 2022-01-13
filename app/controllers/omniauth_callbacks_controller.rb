@@ -23,7 +23,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def affect_spotify_tokens!(credentials)
     @user.refresh_token = credentials.refresh_token
     @user.token = credentials.token
-    current_user = @user
-    current_user.save
+    @user.save!
   end
 end
