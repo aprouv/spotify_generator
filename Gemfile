@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'simple_form'
 gem 'bootstrap', '~> 5.1.3'
 gem 'rspotify'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'omniauth-spotify'
