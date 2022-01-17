@@ -24,6 +24,7 @@
               style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path("energie4.jpg")%>')";
             <% end %>>
           </div>
+          <div class="info-text">
           <ul class="details">
             <% if @playlist.genre.present? %>
               <li>Genre : <%= @playlist.genre.capitalize %></li>
@@ -55,6 +56,10 @@
               </li>
             <% end %>
           </ul>
+          <div class="delete-playlists">
+            <%= link_to "Supprimer", playlist_path(@playlist), method: :delete, data:{confirm: "Etes vous sûr de vouloir supprimer cette playlist?"}, class: "delete-link"%>
+          </div>
+        </div>
         </div>
         <div class="listen-link">
           <%= link_to "https://open.spotify.com/playlist/#{@playlist.spotify_id}", target: :_blank do %>
