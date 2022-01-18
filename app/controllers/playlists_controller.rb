@@ -30,7 +30,6 @@ class PlaylistsController < AuthenticatedUserController
 
   def destroy
     @playlist = Playlist.find(params[:id])
-    @playlist.destroy
     if @playlist.destroy
       PlaylistDestructor.new(@playlist).delete_playlist
     end
