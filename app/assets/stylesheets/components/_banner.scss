@@ -33,3 +33,26 @@
   margin-top: 15px;
   color: rgb(62, 62, 62);
 }
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  .banner {
+    height: 100vh;
+    align-items: stretch;
+  }
+  .banner h1 {
+    font-size: 43px;
+    margin-bottom: 35px;
+    text-align: center;
+  }
+  .banner h5 {
+    font-size: 16px;
+    text-align: center;
+    opacity: 1;
+  }
+  .ml {
+    color: black;
+    text-align: center;
+  }
+}
