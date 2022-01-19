@@ -71,3 +71,27 @@ body > div.background > div > div > div.infos > div.listen-link > a > div:nth-ch
   padding-top: 10px;
   color: white;
 }
+
+// / Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  .infos {
+    flex-wrap: wrap;
+  }
+  .listen-link {
+    position: absolute;
+    bottom: 113px;
+    left: 51px;
+    font-size: 20px;
+  }
+  a.delete-link {
+    bottom: 370px;
+  }
+  .play {
+    height: 95px;
+    width: 95px;
+  }
+  .fas {
+    bottom: 25px;
+    left: 32px;
+  }
+}

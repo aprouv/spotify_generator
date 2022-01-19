@@ -26,3 +26,14 @@
     color: white;
   }
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  a.btn-signin {
+    display: grid;
+    max-width: 300px;
+    justify-items: center;
+    margin: 0 auto;
+    font-size: 20px;
+  }
+}

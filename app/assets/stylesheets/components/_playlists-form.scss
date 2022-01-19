@@ -26,3 +26,15 @@ option {
   background: black;
   color: white;
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  #playlist_danceability {
+   font-size: 12px;
+   color: rgb(32, 31, 31);
+  }
+  #playlist_energy {
+    font-size: 12px;
+    color: rgb(32, 31, 31);
+  }
+}
