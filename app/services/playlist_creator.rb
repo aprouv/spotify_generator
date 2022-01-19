@@ -1,8 +1,4 @@
-class PlaylistCreator
-
-  def initialize(playlist)
-    @playlist = playlist
-  end
+class PlaylistCreator < AbstractPlaylistProvider
 
   def genre
     @playlist.genre
@@ -17,7 +13,7 @@ class PlaylistCreator
   end
 
   def generate_from_seeds
-    user = retrieve_user
+    user = retrieve_provider_user
     recommendations = RSpotify::Recommendations.generate(spotify_recommendations_params)
     tracks = recommendations.tracks
     @spotify_playlist = user.create_playlist!(@playlist.name)
@@ -26,23 +22,6 @@ class PlaylistCreator
   end
 
   private
-
-  def retrieve_user
-    authenticate_on_spotify
-    RSpotify::User.new(
-      'id' => @playlist.user.uid,
-      'credentials' => {
-        'refresh_token' => @playlist.user.refresh_token,
-        'token' => @playlist.user.token,
-        }
-    )
-  end
-
-  def authenticate_on_spotify
-    spotify_id = ENV["CLIENT_ID"]
-    spotify_secret = ENV["CLIENT_SECRET"]
-    RSpotify::authenticate(spotify_id, spotify_secret)
-  end
 
   def spotify_recommendations_params
     {

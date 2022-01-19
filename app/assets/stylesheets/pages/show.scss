@@ -14,6 +14,7 @@
   background-position: center;
   min-width: 200px;
   min-height: 200px;
+  position: relative;
 }
 
 .details {
@@ -21,10 +22,27 @@
   align-self: flex-start;
 }
 
+a.delete-link {
+  color: $pink;
+  text-decoration: none;
+  position: absolute;
+  bottom: 222px;
+  &:hover {
+    color: white;
+  }
+}
+
+.delete-playlists {
+  height: 111px;
+  padding-left: 32px;
+}
+
 .listen-link {
   display: flex;
   width: 30%;
   margin-left: 85px;
+  align-items: center;
+  justify-content: space-between;
   a {
     align-self: center;
     text-decoration: none;
