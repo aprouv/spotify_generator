@@ -31,7 +31,7 @@ class PlaylistsController < AuthenticatedUserController
   def destroy
     @playlist = Playlist.find(params[:id])
     if @playlist.destroy
-      PlaylistDestructor.new(@playlist).delete_playlist
+      PlaylistDestructor.new(@playlist).perform
     end
     redirect_to playlists_path
   end
