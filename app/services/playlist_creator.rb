@@ -1,9 +1,5 @@
 class PlaylistCreator < AbstractPlaylistProvider
 
-  # def initialize(playlist)
-  #   @playlist = playlist
-  # end
-
   def genre
     @playlist.genre
   end
